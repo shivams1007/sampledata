@@ -4,6 +4,7 @@ export interface Category {
     display_order: number;
     description: string;
     icon: string;
+    url: string;
     sub_category: SubCategory[];
 }
 

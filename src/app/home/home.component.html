@@ -2,10 +2,9 @@
     <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
 
         <div
-            class="bg-zinc-100 p-2 sticky shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
+            class="bg-zinc-100 p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
             <div *ngFor="let category of categories">
-                <h5 class="flex">
-                    <!-- <img src="{{category.icon}}" class="w-4 h-4 mt-1" alt=""> -->
+                <h5 class="flex mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="w-6 text-primary h-6">
                         <path fill-rule="evenodd" [attr.d]="category.icon" clip-rule="evenodd" />
@@ -22,7 +21,7 @@
                         (click)="selectCategory(category, sub_category.id)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             class="w-4 text-primary h-4 mt-1">
-                            <path fill-rule="evenodd" [attr.d]="sub_category.icon" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" [attr.d]="sub_category.icon" clip-rule="evenodd"></path>
                         </svg>
                         <a class="cursor-pointer  uppercase hover:text-primary hover:underline focus:text-primary ">{{
                             sub_category.name }}</a>

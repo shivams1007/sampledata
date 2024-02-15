@@ -3,6 +3,7 @@ import { Component, OnInit, inject, Pipe } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { Category } from '../app.interface';
 
 export class HomeComponent implements OnInit {
   appService: AppService = inject(AppService)
-  constructor() { }
+  constructor(private router: Router) { }
 
   public categories: Category[] = [];
   totalWords: number | undefined;
@@ -29,15 +30,17 @@ export class HomeComponent implements OnInit {
   getCategory() {
     this.appService.fetchData().subscribe(data => {
       this.categories = data;
-      console.log("🚀 ~ HomeComponent ~ this.appService.fetchData ~ categories:", this.categories)
       if (this.categories.length > 0) {
-        this.selectCategory(this.categories[0])
+        this.selectCategory(this.categories[1])
       }
     });
   }
 
 
   selectCategory(category: Category, subcategory_id: number | null = null) {
+    const categorySlug = category.url;
+    this.router.navigate(['/sample', categorySlug]);
+    console.log("🚀", categorySlug)
     const categoryCopy = JSON.parse(JSON.stringify(category));
     if (subcategory_id) {
       categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id)
