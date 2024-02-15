@@ -5,16 +5,25 @@
             class="bg-zinc-100 p-2 sticky shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
             <div *ngFor="let category of categories">
                 <h5 class="flex">
-                    <strong class="text-base cursor-pointer text-primary"
-                        [ngClass]="{'border-bottom': selectCategory(category)}">
+                    <!-- <img src="{{category.icon}}" class="w-4 h-4 mt-1" alt=""> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 text-primary h-6">
+                        <path fill-rule="evenodd" [attr.d]="category.icon" clip-rule="evenodd" />
+                    </svg>
+
+                    <strong class="text-base cursor-pointer text-primary">
                         <a class=" capitalize" (click)="selectCategory(category)">
                             Sample {{ category.category_name }}
                         </a>
                     </strong>
                 </h5>
-                <ul class="list-none p-1 pl-6 ">
-                    <li class="list-disc" *ngFor="let sub_category of category.sub_category"
+                <ul class="list-none p-1 ">
+                    <li class="flex ml-2" *ngFor="let sub_category of category.sub_category"
                         (click)="selectCategory(category, sub_category.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-4 text-primary h-4 mt-1">
+                            <path fill-rule="evenodd" [attr.d]="sub_category.icon" clip-rule="evenodd" />
+                        </svg>
                         <a class="cursor-pointer  uppercase hover:text-primary hover:underline focus:text-primary ">{{
                             sub_category.name }}</a>
                     </li>
