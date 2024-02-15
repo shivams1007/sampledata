@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, doc, getDocs } from '@angular/fire/firestore';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -28,5 +28,24 @@ export class AppService {
                 observer.error(error);
             });
         });
+    }
+
+    generatesampelText(totalWords: number): Observable<string> {
+        const characters = [
+            "The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog",
+            "Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+            "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna",
+            "aliqua", "Ut", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco",
+            "laboris", "nisi", "ut", "aliquip", "ex", "ea", "commodo", "consequat", "Duis", "aute", "irure",
+            "dolor", "in", "reprehenderit", "in", "voluptate", "velit", "esse", "cillum", "dolore", "eu", "fugiat",
+            "nulla", "pariatur", "Excepteur", "sint", "occaecat", "cupidatat", "non", "proident", "sunt", "in", "culpa",
+            "qui", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"
+        ];
+        let text = '';
+        for (let i = 0; i < totalWords; i++) {
+            let randomIndex = Math.floor(Math.random() * characters.length);
+            text += characters[randomIndex] + ' ';
+        }
+        return of(text.trim());
     }
 }
