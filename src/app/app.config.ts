@@ -8,6 +8,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCPJ8CPE8TKdyPYVvWrS4-rFzZ3W_qM954",

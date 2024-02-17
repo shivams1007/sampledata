@@ -5,6 +5,7 @@ export interface Category {
     description: string;
     icon: string;
     url: string;
+    slug: string;
     sub_category: SubCategory[];
 }
 
@@ -14,6 +15,7 @@ export interface SubCategory {
     disp_order: number;
     icon: string;
     url: string;
+    slug: string;
     file: File[];
 }
 

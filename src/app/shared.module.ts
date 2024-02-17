@@ -3,6 +3,9 @@ import { DatePipe, NgClass, NgFor, NgIf, NgTemplateOutlet } from '@angular/commo
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilesizePipe } from './filesize.pipe';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { NgxSkeletonLoaderComponent } from 'ngx-skeleton-loader';
 
 @NgModule({
     imports: [
@@ -14,7 +17,8 @@ import { FilesizePipe } from './filesize.pipe';
         DatePipe,
         FormsModule,
         ReactiveFormsModule,
-        FilesizePipe
+        FilesizePipe,
+        NavComponent,
     ],
     exports: [
         NgFor,
@@ -25,7 +29,8 @@ import { FilesizePipe } from './filesize.pipe';
         DatePipe,
         FormsModule,
         ReactiveFormsModule,
-        FilesizePipe
+        FilesizePipe,
+        NavComponent,
     ]
 })
 export class SharedModule { }

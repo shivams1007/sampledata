@@ -3,27 +3,40 @@ import { Component, OnInit, inject, Pipe } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, NgxSkeletonLoaderModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 
 export class HomeComponent implements OnInit {
   appService: AppService = inject(AppService)
-  constructor(private router: Router) { }
 
   public categories: Category[] = [];
   totalWords: number | undefined;
   generatedText: string = '';
   showTextArea: boolean = false;
   selectedCategory: Category | undefined = undefined;
+  slug: any;
+  selected_category: string = '';
+  selected_Subcatgory: string = '';
+  skeleton: boolean = true;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.slug = params['slug'];
+      if (this.slug) {
+        this.selectCategoryBySlug(this.slug);
+      }
+    });
     this.getCategory();
   }
 
@@ -31,19 +44,45 @@ export class HomeComponent implements OnInit {
     this.appService.fetchData().subscribe(data => {
       this.categories = data;
       if (this.categories.length > 0) {
-        this.selectCategory(this.categories[1])
+        this.selectCategory(this.categories[0])
       }
+      this.selectCategoryBySlug(this.slug);
     });
   }
 
 
+
+  selectCategoryBySlug(slug: string) {
+    if (this.categories.length === 0) {
+      return;
+    }
+    const foundCategory = this.categories.find(category => category.slug === slug);
+    if (foundCategory) {
+      this.selectCategory(foundCategory);
+    }
+    for (const category of this.categories) {
+      const foundSubCategory = category.sub_category.find(subcategory => subcategory.slug === slug);
+      if (foundSubCategory) {
+        this.selectCategory(category, foundSubCategory.id);
+        return;
+      }
+    }
+  }
+
   selectCategory(category: Category, subcategory_id: number | null = null) {
-    const categorySlug = category.url;
-    this.router.navigate(['/sample', categorySlug]);
-    console.log("🚀", categorySlug)
+    this.selected_category = category.category_name;
     const categoryCopy = JSON.parse(JSON.stringify(category));
+    this.selectedCategory = category;
+    let CategorySlug = category.url;
     if (subcategory_id) {
-      categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id)
+      const foundSubcategory = category.sub_category.find(subcategory => subcategory.id === subcategory_id);
+      if (foundSubcategory) {
+        CategorySlug = `${foundSubcategory.url}`;
+      }
+    }
+    this.router.navigate([CategorySlug]);
+    if (subcategory_id) {
+      categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id);
     }
     this.selectedCategory = categoryCopy;
   }
@@ -88,3 +127,5 @@ export class HomeComponent implements OnInit {
     document.body.removeChild(textarea);
   }
 }
+
+
