@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.skeleton = true;
     this.appService.fetchData().subscribe(data => {
       this.categories = data;
+      console.log("🚀 ~ HomeComponent ~ this.appService.fetchData ~ this.categories:", this.categories)
       if (this.categories.length > 0) {
         this.selectCategory(this.categories[0])
       }
@@ -52,8 +53,6 @@ export class HomeComponent implements OnInit {
       this.skeleton = false;
     });
   }
-
-
 
   selectCategoryBySlug(slug: string) {
     if (this.categories.length === 0) {
@@ -106,13 +105,14 @@ export class HomeComponent implements OnInit {
       this.generatedText = '';
     }
   }
-  downloadData(url: string) {
+
+  downloadData(url: string, resolution: string) {
     fetch(url)
       .then(response => response.blob())
       .then(blob => {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = 'sampleData';
+        link.download = `sampleData_${resolution}`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

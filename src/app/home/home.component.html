@@ -11,10 +11,7 @@
             class="bg-zinc-100 p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-6 text-primary h-6">
-                        <path fill-rule="evenodd" [attr.d]="category.icon" clip-rule="evenodd" />
-                    </svg>
+                    <img class="w-8 text-primary" src="{{category.icon}}" alt="">
                     <strong class="text-base ml-2  cursor-pointer text-primary"
                         [ngClass]="{'border-bottom': selected_category === category.category_name}">
                         <a class=" capitalize" (click)="selectCategory(category)">
@@ -25,10 +22,7 @@
                 <ul class="list-none p-1">
                     <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
                         (click)="selectCategory(category, sub_category.id)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-4 text-primary h-4 mt-1">
-                            <path fill-rule="evenodd" [attr.d]="sub_category.icon" clip-rule="evenodd"></path>
-                        </svg>
+                        <img class="w-6 text-primary" src="{{sub_category.icon}}" alt="">
                         <a class="cursor-pointer ml-2  uppercase hover:text-primary hover:underline focus:text-primary"
                             [ngClass]="{'border-bottom': selected_Subcatgory === sub_category.name}">{{
                             sub_category.name }}</a>
@@ -50,12 +44,7 @@
             <div *ngFor="let sub_category of selectedCategory.sub_category">
                 <div class="flex">
                     <div class="mt-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-6 text-primary h-4">
-                            <path fill-rule="evenodd"
-                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                                clip-rule="evenodd" />
-                        </svg>
+                        <img class="w-6 -mt-1 mr-2 text-primary" src="{{sub_category.icon}}" alt="">
                     </div>
                     <p class="mt-4 text-xl text-primary font-medium capitalize">Download .{{sub_category.name}} Sample
                         {{selectedCategory.category_name}}</p>
@@ -92,7 +81,7 @@
                                     {{file.resolution}}
                                 </td>
                                 <td class="px-16">
-                                    <a (click)="downloadData(file.url)"
+                                    <a (click)="downloadData(file.url ,file.resolution)"
                                         class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline"><svg
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-6 h-6 ">
