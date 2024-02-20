@@ -1,0 +1,90 @@
+<div class="grid grid-cols-12 gap-4 mx-auto p-10 mt-10">
+    <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
+        <div
+            class="p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter pl-4pt-4">
+            <div *ngFor="let index of [1, 2, 3, 4, 5]">
+                <h5 class="flex mb-2 mt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-10 skeleton bg-gray-200 text-primary h-6">
+                        <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd" />
+                    </svg>
+
+                    <strong class="text-base ml-2  cursor-pointer text-primary">
+                        <a class="capitalize">
+                            <div class="skeleton w-[150px] bg-gray-200 h-6"></div>
+                        </a>
+                    </strong>
+                </h5>
+                <ul class="list-none p-1">
+                    <li class="flex ml-2 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-4 skeleton h-10 bg-gray-200 text-primary h-4 mt-1">
+                            <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd"></path>
+                        </svg>
+                        <a
+                            class="cursor-pointer   ml-2 uppercase hover:text-primary hover:underline focus:text-primary">
+                            <div class="w-[50px] skeleton bg-gray-200 h-6"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12  lg:col-span-8 md:col-span-8 sm:col-span-12">
+        <div>
+            <div>
+                <p class="text-3xl font-bold text-primary capitalize w-[400px] skeleton h-[30px] bg-gray-200 mb-2">
+                </p>
+                <p class=" w-full h-[200px] skeleton bg-gray-200"></p>
+                <hr class="mt-4 border-2">
+            </div>
+            <div>
+                <div class="flex">
+                    <div class="mt-6 w-[20px] mr-2 h-[20px] bg-gray-200 skeleton">
+
+                    </div>
+                    <p
+                        class="mt-4 text-xl text-primary font-medium capitalize skeleton  w-[300px] h-[30px] bg-gray-200">
+                    </p>
+                </div>
+
+                <div class="relative overflow-x-auto mb-4 mt-6 shadow-md sm:rounded-lg" *ngFor="let index of [1, 2]">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                        <thead class=" text-xs text-gray-700 uppercase text-center bg-gray-50 ">
+                            <tr>
+                                <th scope="col" class="px-6  py-4">
+                                    Size
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Format
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    Resolution
+                                </th>
+                                <th scope="col" class="px-6 py-4">
+                                    One Click Download
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center" *ngFor="let index of [1, 2, 3]">
+                            <tr class=" border-b ">
+                                <td scope="row" class="px-6 py-3 ">
+                                    <div class=" w-[full] skeleton h-[25px] bg-gray-200"></div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <div class=" w-[full] skeleton h-[25px] bg-gray-200"></div>
+                                </td>
+                                <td class="px-6 py-3">
+                                    <div class=" w-[full] skeleton h-[25px] bg-gray-200"></div>
+                                </td>
+                                <td class="px-16">
+                                    <div class=" w-[full] skeleton h-[25px] bg-gray-200"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,12 @@
+<!-- Implemented Nev bar -->
 <app-nav></app-nav>
-<!-- <div class="grid grid-cols-12 gap-4 mx-auto p-10 mt-10 ">
-    <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
 
+<!-- Implemented skeleton -->
+<app-skeleton *ngIf="skeleton"></app-skeleton>
+
+<!-- Implemented main -->
+<div class="grid grid-cols-12 gap-4 mx-auto p-10 mt-10" *ngIf="!skeleton">
+    <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
         <div
             class="bg-zinc-100 p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
             <div *ngFor="let category of categories">
@@ -141,133 +146,4 @@
             </div>
         </div>
     </div>
-</div> -->
-<div class="grid grid-cols-12 gap-4 mx-auto p-10 mt-10" *ngIf="skeleton">
-    <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
-        <div
-            class="p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter pl-4pt-4">
-            <div *ngFor="let category of categories">
-                <h5 class="flex mb-2 mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-6 h-10 bg-gray-200 text-primary h-6">
-                        <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd" />
-                    </svg>
-
-                    <strong class="text-base ml-2  cursor-pointer text-primary"
-                        [ngClass]="{'border-bottom': selected_category === category.category_name}">
-                        <a class="capitalize" (click)="selectCategory(category)">
-                            <div class="w-[150px] bg-gray-200 h-6"></div>
-                        </a>
-                    </strong>
-                </h5>
-                <ul class="list-none p-1">
-                    <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
-                        (click)="selectCategory(category, sub_category.id)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-4 h-10 bg-gray-200 text-primary h-4 mt-1">
-                            <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd"></path>
-                        </svg>
-                        <a class="cursor-pointer  ml-2 uppercase hover:text-primary hover:underline focus:text-primary"
-                            [ngClass]="{'border-bottom': selected_Subcatgory === sub_category.name}">
-                            <div class="w-[50px] bg-gray-200 h-6"></div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-span-12  lg:col-span-8 md:col-span-8 sm:col-span-12">
-        <div *ngIf="selectedCategory">
-            <div>
-                <p class="text-3xl font-bold text-primary capitalize w-[400px] h-[30px] bg-gray-200 mb-2">
-                </p>
-                <p class=" w-full h-[200px] bg-gray-200"></p>
-                <hr class="mt-4 border-2">
-            </div>
-            <div *ngFor="let sub_category of selectedCategory.sub_category">
-                <div class="flex">
-                    <div class="mt-6 w-[20px] mr-2 h-[20px] bg-gray-200">
-
-                    </div>
-                    <p class="mt-4 text-xl text-primary font-medium capitalize  w-[300px] h-[30px] bg-gray-200"></p>
-                </div>
-
-                <div *ngIf="selectedCategory.category_id !==1"
-                    class="relative overflow-x-auto mb-4 mt-6 shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                        <thead class=" text-xs text-gray-700 uppercase text-center bg-gray-50 ">
-                            <tr>
-                                <th scope="col" class="px-6  py-4">
-                                    Size
-                                </th>
-                                <th scope="col" class="px-6 py-4">
-                                    Format
-                                </th>
-                                <th scope="col" class="px-6 py-4">
-                                    Resolution
-                                </th>
-                                <th scope="col" class="px-6 py-4">
-                                    One Click Download
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr *ngFor="let file of sub_category.file " class=" border-b ">
-                                <td scope="row" class="px-6 py-3 ">
-                                    <div class=" w-[full] h-[25px] bg-gray-200"></div>
-                                </td>
-                                <td class="px-6 py-3">
-                                    <div class=" w-[full] h-[25px] bg-gray-200"></div>
-                                </td>
-                                <td class="px-6 py-3">
-                                    <div class=" w-[full] h-[25px] bg-gray-200"></div>
-                                </td>
-                                <td class="px-16">
-                                    <div class=" w-[full] h-[25px] bg-gray-200"></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div *ngIf="selectedCategory.category_id ===1"
-                class="col-span-12   lg:col-span-8 md:col-span-8 mt-6 sm:col-span-12">
-                <div
-                    class=" p-6  sticky shadow-xl  font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4 pt-4">
-                    <div class=" text-xl font-medium">
-                        <p class="text-primary w-40 h-6 bg-gray-200 "></p>
-                    </div>
-                    <div class="sm:flex grid">
-                        <div class="sm:flex grid mt-4">
-                            <div>
-                                <p class="text-primary w-28 h-6 bg-gray-200 "></p>
-                            </div>
-                            <div>
-                                <input class="bg-gray-200 sm:ml-2 ml-0 " [(ngModel)]="totalWords" type="number">
-                            </div>
-                        </div>
-                        <div class="-mt-1  sm:ml-4 ml-0 mb-4">
-                            <Button (click)="generateText()"
-                                class="bg-primary mb-4 text-white border p-1 bg-gray-200 w-28 h-10 -mt-1  rounded-md mt-4 px-4 "></Button>
-                        </div>
-                    </div>
-                    <div *ngIf="showTextArea" class="-mt-4">
-                        <div class=" text-end">
-                            <Button (click)="copyText()"
-                                class="bg-primary mb-1 text-white border p-1  rounded-md mt-4 px-2 "><svg
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z" />
-                                </svg>
-                            </Button>
-                        </div>
-                        <textarea class="resize border border-primary  focus:border-primary p-1 w-full h-96 rounded-md"
-                            [(ngModel)]="generatedText"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-<ngx-skeleton-loader *ngIf="!skeleton" appearance="custom-content"></ngx-skeleton-loader>

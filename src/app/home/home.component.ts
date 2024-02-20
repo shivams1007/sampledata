@@ -5,11 +5,12 @@ import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonComponent } from '../skeleton/skeleton.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SharedModule, NgxSkeletonLoaderModule],
+  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -41,12 +42,14 @@ export class HomeComponent implements OnInit {
   }
 
   getCategory() {
+    this.skeleton = true;
     this.appService.fetchData().subscribe(data => {
       this.categories = data;
       if (this.categories.length > 0) {
         this.selectCategory(this.categories[0])
       }
       this.selectCategoryBySlug(this.slug);
+      this.skeleton = false;
     });
   }
 
@@ -103,7 +106,6 @@ export class HomeComponent implements OnInit {
       this.generatedText = '';
     }
   }
-
   downloadData(url: string) {
     fetch(url)
       .then(response => response.blob())
