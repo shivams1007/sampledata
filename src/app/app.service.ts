@@ -1,5 +1,6 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, doc, getDocs } from '@angular/fire/firestore';
 import { Observable, forkJoin, of } from 'rxjs';
 
@@ -9,7 +10,7 @@ import { Observable, forkJoin, of } from 'rxjs';
 export class AppService {
     firestore: Firestore = inject(Firestore);
 
-    constructor() { }
+    constructor(@Inject(DOCUMENT) private doc: any) { }
     fetchData(): Observable<any> {
         const category = collection(this.firestore, 'category');
         return this.getItemsFromCollection(category);
@@ -48,4 +49,5 @@ export class AppService {
         }
         return of(text.trim());
     }
+
 }

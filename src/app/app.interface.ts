@@ -6,6 +6,7 @@ export interface Category {
     icon: string;
     url: string;
     slug: string;
+    meta_title: string;
     sub_category: SubCategory[];
 }
 

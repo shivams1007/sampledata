@@ -9,6 +9,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { provideToastr } from 'ngx-toastr';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCPJ8CPE8TKdyPYVvWrS4-rFzZ3W_qM954",
@@ -26,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     provideClientHydration(),
+    provideToastr(),
     importProvidersFrom([
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),

@@ -1,16 +1,19 @@
 import { SubCategory } from './../app.interface';
-import { Component, OnInit, inject, Pipe } from '@angular/core';
+import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
+import { DOCUMENT } from '@angular/common';
+import { AboutComponent } from '../about/about.component';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent],
+  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent, AboutComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -28,7 +31,7 @@ export class HomeComponent implements OnInit {
   selected_Subcatgory: string = '';
   skeleton: boolean = true;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private meta: Meta, private title: Title, private activatedRoute: ActivatedRoute, @Inject(DOCUMENT) private doc: any) {
   }
 
   ngOnInit(): void {
@@ -47,11 +50,18 @@ export class HomeComponent implements OnInit {
       this.categories = data;
       console.log("🚀 ~ HomeComponent ~ this.appService.fetchData ~ this.categories:", this.categories)
       if (this.categories.length > 0) {
-        this.selectCategory(this.categories[0])
+        this.selectCategory(this.categories[1])
       }
       this.selectCategoryBySlug(this.slug);
       this.skeleton = false;
     });
+  }
+
+  setTitle(Meta_title: string) {
+    this.title.setTitle(Meta_title);
+  }
+  setDescription(description: string) {
+    this.meta.updateTag({ name: 'description', content: description });
   }
 
   selectCategoryBySlug(slug: string) {
@@ -87,6 +97,9 @@ export class HomeComponent implements OnInit {
       categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id);
     }
     this.selectedCategory = categoryCopy;
+    this.setCanonicalURL();
+    this.setTitle(category.meta_title);
+    this.setDescription(category.description);
   }
 
   generateText() {
@@ -127,6 +140,20 @@ export class HomeComponent implements OnInit {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
+  }
+
+  setCanonicalURL() {
+    const existingCanonicalLink = this.doc.querySelector('link[rel="canonical"]');
+    if (existingCanonicalLink) {
+      existingCanonicalLink.remove();
+    }
+    let link = this.doc.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    this.doc.head.appendChild(link);
+    link.setAttribute('href', window.location.href);
+    window.addEventListener('popstate', () => {
+      link.setAttribute('href', window.location.href);
+    });
   }
 }
 

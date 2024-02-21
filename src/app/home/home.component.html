@@ -33,11 +33,10 @@
     </div>
     <div class="col-span-12  lg:col-span-8 md:col-span-8 sm:col-span-12">
         <div *ngIf="selectedCategory">
-            <div>
-                <p class="text-3xl font-bold text-primary capitalize">Download Sample
-                    {{selectedCategory.category_name}}
+            <div class="md:leading-7">
+                <p class="text-3xl font-bold text-primary capitalize">
+                    {{selectedCategory.meta_title}}
                 </p>
-                <p class="mt-2 text-sm">Are you a mobile app developer?</p>
                 <p>{{selectedCategory.description}}</p>
                 <hr class="mt-4 border-2">
             </div>
@@ -133,6 +132,7 @@
                     </div>
                 </div>
             </div>
+            <!-- <app-about></app-about> -->
         </div>
     </div>
 </div>
