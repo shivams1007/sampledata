@@ -1,0 +1,67 @@
+<app-nav></app-nav>
+<div class="container  leading-4 mx-auto lg:mt-50 md:mt-28 sm:mt-16 mt-6 md:w-[850px] p-3 sm:p-5 md:p-10">
+    <div class="mb-2">
+        <button [routerLink]="['/']" routerLinkActive="router-link-active" class="text-primary font-medium  text-md ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 inline-block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            Home Page</button>
+    </div>
+    <div class="col-span-12 lg:col-span-8 md:col-span-8 mt-2 sm:col-span-12">
+        <div
+            class="bg-zinc-100 p-6 sticky shadow-xl font-sansrounded-lg rounded-lg tracking-tighter border-2 border-dashed border-primary pl-4 pt-4">
+            <div class="text-2xl font-medium border-bottom ">
+                <p class="text-primary">Contact Us</p>
+            </div>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class=" mt-6">
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 text-lg font-medium text-primary">Full
+                        name</label>
+                    <input type="text" id="fullName" formControlName="fullName"
+                        class="shadow-sm bg-gray-50 border border-primary text-primary text-sm rounded-lg block w-full p-3"
+                        placeholder="Full name" />
+                    <div *ngIf="contactForm.controls['fullName']?.invalid && contactForm.controls['fullName']?.touched"
+                        class="text-red-400">
+                        <div>Name is required.</div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 text-lg font-medium text-primary">Email
+                    </label>
+                    <input type="text" id="email" formControlName="email"
+                        class="shadow-sm bg-gray-50 border border-primary text-primary text-sm rounded-lg block w-full p-3"
+                        placeholder="Nitin@gmail.com" />
+                    <div *ngIf="contactForm.controls['email']?.invalid && contactForm.controls['email']?.touched"
+                        class="text-red-400">
+                        <div>Email is required.</div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 text-lg font-medium text-primary">Subject
+                    </label>
+                    <input type="text" id="email" formControlName="subject"
+                        class="shadow-sm bg-gray-50 border border-primary text-primary text-sm rounded-lg block w-full p-3"
+                        placeholder="Enter Subject" />
+                    <div *ngIf="contactForm.controls['subject']?.invalid && contactForm.controls['subject']?.touched"
+                        class="text-red-400">
+                        <div>Subject is required.</div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 text-lg font-medium text-primary">Message
+                    </label>
+                    <textarea formControlName="message"
+                        class="shadow-sm bg-gray-50 border border-primary text-primary text-sm rounded-lg block w-full p-3"
+                        name="" id="" cols="30" rows="5"></textarea>
+                    <div *ngIf="contactForm.controls['message']?.invalid && contactForm.controls['message']?.touched"
+                        class="text-red-400">
+                        <div>message is required.</div>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="text-white bg-primary rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

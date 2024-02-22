@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
     this.skeleton = true;
     this.appService.fetchData().subscribe(data => {
       this.categories = data;
-      console.log("🚀 ~ HomeComponent ~ this.appService.fetchData ~ this.categories:", this.categories)
       if (this.categories.length > 0) {
         this.selectCategory(this.categories[1])
       }

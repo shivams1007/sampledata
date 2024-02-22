@@ -5,10 +5,10 @@
 <app-skeleton *ngIf="skeleton"></app-skeleton>
 
 <!-- Implemented main -->
-<div class="grid grid-cols-12 gap-4 mx-auto p-10 mt-10" *ngIf="!skeleton">
+<div class="grid grid-cols-12 gap-4 mx-auto p-5 md:p-10" *ngIf="!skeleton">
     <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
         <div
-            class="bg-zinc-100 p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border-dashed border-black border pl-4pt-4">
+            class="bg-zinc-100 p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border border-dashed border-primary  pl-4pt-4">
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2">
                     <img class="w-8 text-primary" src="{{category.icon}}" alt="">
@@ -34,10 +34,10 @@
     <div class="col-span-12  lg:col-span-8 md:col-span-8 sm:col-span-12">
         <div *ngIf="selectedCategory">
             <div class="md:leading-7">
-                <p class="text-3xl font-bold text-primary capitalize">
+                <p class="sm:text-3xl text-2xl mb-2  font-bold text-primary capitalize">
                     {{selectedCategory.meta_title}}
                 </p>
-                <p>{{selectedCategory.description}}</p>
+                <p class="sm:text-base text-sm">{{selectedCategory.description}}</p>
                 <hr class="mt-4 border-2">
             </div>
             <div *ngFor="let sub_category of selectedCategory.sub_category">
@@ -45,7 +45,9 @@
                     <div class="mt-6">
                         <img class="w-6 -mt-1 mr-2 text-primary" src="{{sub_category.icon}}" alt="">
                     </div>
-                    <p class="mt-4 text-xl text-primary font-medium capitalize">Download .{{sub_category.name}} Sample
+                    <p class="mt-4 sm:text-xl text-lg text-primary font-medium capitalize">Download
+                        .{{sub_category.name}}
+                        Sample
                         {{selectedCategory.category_name}}</p>
                 </div>
 
@@ -69,17 +71,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let file of sub_category.file" class="bg-white border-b ">
-                                <td scope="row" class="px-6 py-3 ">
+                            <tr *ngFor="let file of sub_category.file" class="bg-white sm:text-sm text-xs border-b ">
+                                <td scope="row" class="px-6 py-3">
                                     {{file.size | filesize}}
                                 </td>
-                                <td class="px-6 py-3">
+                                <td class="px-8 py-3">
                                     {{sub_category.name}}
                                 </td>
                                 <td class="px-6 py-3">
                                     {{file.resolution}}
                                 </td>
-                                <td class="px-16">
+                                <td class=" sm:px-16 px-12">
                                     <a (click)="downloadData(file.url ,file.resolution)"
                                         class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline"><svg
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
