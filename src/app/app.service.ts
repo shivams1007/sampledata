@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, doc, getDocs } from '@angular/fire/firestore';
+import { Meta, Title } from '@angular/platform-browser';
 import { Observable, forkJoin, of } from 'rxjs';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Observable, forkJoin, of } from 'rxjs';
 export class AppService {
     firestore: Firestore = inject(Firestore);
 
-    constructor(@Inject(DOCUMENT) private doc: any) { }
+    constructor(@Inject(DOCUMENT) private doc: any, private title: Title, private meta: Meta,) { }
     fetchData(): Observable<any> {
         const category = collection(this.firestore, 'category');
         return this.getItemsFromCollection(category);
@@ -48,6 +49,27 @@ export class AppService {
             text += characters[randomIndex] + ' ';
         }
         return of(text.trim());
+    }
+
+    setTitle(Meta_title: string) {
+        this.title.setTitle(Meta_title);
+    }
+
+    setDescription(description: string) {
+        this.meta.updateTag({ name: 'description', content: description });
+    }
+    setCanonicalURL() {
+        const existingCanonicalLink = this.doc.querySelector('link[rel="canonical"]');
+        if (existingCanonicalLink) {
+            existingCanonicalLink.remove();
+        }
+        let link = this.doc.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        this.doc.head.appendChild(link);
+        link.setAttribute('href', window.location.href);
+        window.addEventListener('popstate', () => {
+            link.setAttribute('href', window.location.href);
+        });
     }
 
 }

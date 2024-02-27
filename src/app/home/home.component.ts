@@ -56,13 +56,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  setTitle(Meta_title: string) {
-    this.title.setTitle(Meta_title);
-  }
-  setDescription(description: string) {
-    this.meta.updateTag({ name: 'description', content: description });
-  }
-
   selectCategoryBySlug(slug: string) {
     if (this.categories.length === 0) {
       return;
@@ -80,6 +73,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   selectCategory(category: Category, subcategory_id: number | null = null) {
     this.selected_category = category.category_name;
     const categoryCopy = JSON.parse(JSON.stringify(category));
@@ -96,9 +90,9 @@ export class HomeComponent implements OnInit {
       categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id);
     }
     this.selectedCategory = categoryCopy;
-    this.setCanonicalURL();
-    this.setTitle(category.meta_title);
-    this.setDescription(category.description);
+    this.appService.setCanonicalURL();
+    this.appService.setTitle(category.meta_title);
+    this.appService.setDescription(category.description);
   }
 
   generateText() {
@@ -139,20 +133,6 @@ export class HomeComponent implements OnInit {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-  }
-
-  setCanonicalURL() {
-    const existingCanonicalLink = this.doc.querySelector('link[rel="canonical"]');
-    if (existingCanonicalLink) {
-      existingCanonicalLink.remove();
-    }
-    let link = this.doc.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    this.doc.head.appendChild(link);
-    link.setAttribute('href', window.location.href);
-    window.addEventListener('popstate', () => {
-      link.setAttribute('href', window.location.href);
-    });
   }
 }
 
