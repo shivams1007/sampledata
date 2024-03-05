@@ -58,6 +58,7 @@ export class AppService {
     setDescription(description: string) {
         this.meta.updateTag({ name: 'Description', content: description });
     }
+
     setCanonicalURL() {
         const existingCanonicalLink = this.doc.querySelector('link[rel="canonical"]');
         if (existingCanonicalLink) {

@@ -11,7 +11,9 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/rout
 })
 export class NavComponent {
   isAboutPageActive: boolean = false;
+  sideMenuOpen: boolean = false;
   iscontectPageActive: boolean = false;
+  ishomePageActive: boolean = false;
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -25,9 +27,17 @@ export class NavComponent {
   contectUsPage() {
     this.router.navigate(['/contect-us']);
   }
+  homePage() {
+    this.router.navigate(['/sample-videos']);
+  }
   updateActivePage() {
     const currentUrl = this.router.url;
     this.isAboutPageActive = currentUrl === '/about';
     this.iscontectPageActive = currentUrl === '/contect-us';
+    this.ishomePageActive = currentUrl === '/sample-videos';
   }
+  toggleSideMenu() {
+    this.sideMenuOpen = !this.sideMenuOpen;
+  }
+
 }

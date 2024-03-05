@@ -1,47 +1,104 @@
 <app-nav></app-nav>
-<div class="container  leading-4 mx-auto lg:mt-50 md:mt-28 sm:mt-16 mt-6 md:w-[850px] p-3 sm:p-5 md:p-10">
-    <div class="mb-2">
-        <button [routerLink]="['/']" routerLinkActive="router-link-active" class="text-primary font-medium  text-md ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6 inline-block">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-            </svg>
-            Home Page</button>
+<div class="container mx-auto px-6 py-12">
+    <div class="bg-cover bg-center bg-no-repeat grid items-center justify-center mb-8">
+        <img src="assets/svg/about.svg" alt="">
+        <h1 class="sm:text-5xl text-center text-2xl text-primary font-bold">Welcome to Sample Data</h1>
     </div>
-    <div class="col-span-12 lg:col-span-8 md:col-span-8 mt-2 sm:col-span-12">
-        <div
-            class="bg-zinc-100 p-6 sticky shadow-xl font-sansrounded-lg rounded-lg tracking-tighter border-2 border-dashed border-primary pl-4 pt-4">
-            <div class="text-3xl font-medium border-bottom ">
-                <p class="text-primary">About</p>
-            </div>
-            <div class="mt-2 leading-8">
-                <p>
-                    The name "Sample Videos" itself is a self-explanatory on its own, but don't get it fouled by
-                    just the name. There is lot going on there. Welcome to Sample Videos!
 
-                    Now you might wondering who is behind creating this helpful initiative and what was the
-                    motive when he started? For that let me introduce, "Miral Viroja". He is the founder of this
-                    website, a perfect destination to find multiple and useful alternatives for your
-                    applications' video needs and compatibility.
+    <!-- Main Content -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-primary mb-4">About Us</h2>
+        <p class="text-gray-700 leading-relaxed">
+            Sample Data is your ultimate destination for high-quality sample data for comprehensive testing of software
+            applications, and the best part? It's completely free!
+            Whether you're a seasoned developer or just starting out, our platform provides you with a wide range of
+            sample data, including images, videos, text, audio,
+            documents, files, and more, all available at no cost.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-4">
+            Our platform caters to developers across different domains, offering a diverse collection of sample data to
+            meet the varied testing requirements. We understand
+            the importance of reliable data for accurate testing, and we're committed to providing developers with the
+            resources they need, free of charge.
+        </p>
+    </div>
 
-                    Once he was looking for a video to download and to use in web application, but after trying
-                    (wasting) some time on search engines, he found no useful video. Actually he found some
-                    links but all of them were getting him to another websites, to increase those website's page
-                    visits :(
+    <!-- Offer Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-primary mb-4">What We Offer</h2>
+        <p class="text-gray-700 leading-relaxed">
+            Sample Data offers an extensive range of sample data in various formats and resolutions, meticulously
+            curated to meet the diverse testing requirements of developers,
+            and the best part? It's all available for free! Our collection includes high-definition images, standard and
+            4K videos, plain and formatted text, audio clips, PDF documents,
+            CSV files, and more.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-4">
+            Whether you're testing image recognition algorithms, video streaming capabilities, natural language
+            processing models, or database systems, our platform provides the resources
+            you need for thorough testing, at no cost. With Sample Data, developers can ensure their applications
+            perform reliably across different scenarios and environments, without breaking
+            the bank.
+        </p>
+    </div>
 
-                    After near about 15 minutes he found one.
+    <!-- Why Choose Us Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-primary mb-4">Why Choose Sample Data</h2>
+        <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+            <li>Diverse Range of Free Data</li>
+            <li>High-Quality Content</li>
+            <li>Easy Accessibility</li>
+            <li>Flexible Download Options</li>
+            <li>Regular Updates</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed mt-4">
+            Sample Data stands out from other testing resources due to its commitment to providing diverse, high-quality
+            data that is easily accessible, customizable, and completely free of charge.
+            Developers can rely on our platform for regular updates and new additions to our collection, ensuring they
+            always have access to the latest resources for testing their applications, without
+            any financial constraints.
+        </p>
+    </div>
 
-                    He wondered that in this www world it was very difficult for him to found a sample video
-                    even after he was two years of experienced in Information Technology firm.
+    <!-- How It Works Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-primary mb-4">How It Works</h2>
+        <ol class="list-decimal list-inside text-gray-700 leading-relaxed">
+            <li>Browse through our extensive categories of sample data</li>
+            <li>Select the data that best suits your testing requirements</li>
+            <li>Customize your download preferences</li>
+            <li>Download the selected sample data and use it for testing</li>
+        </ol>
+        <p class="text-gray-700 leading-relaxed mt-4">
+            With Sample Data, testing your software applications is as easy as 1-2-3. Our intuitive platform allows
+            developers to quickly find, download, and integrate sample data into their testing workflows,
+            saving time and effort while ensuring reliable results, all without spending a dime. Get started today and
+            experience the power of free sample data with Sample Data!
+        </p>
+    </div>
 
-                    So he decided to build a common and easy accessible platform for everyone out there to get
-                    different type and size of videos they require so that they do not have to struggle for long
-                    searching on Internet.
-                </p>
-            </div>
-            <div class="mt-6">
-                <strong class="mt-4">Like Us on facebook if you like this service. Thanks!</strong>
-            </div>
-        </div>
+    <!-- Get Started Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-primary mb-4">Get Started Today</h2>
+        <p class="text-gray-700 leading-relaxed">
+            Ready to elevate your testing experience without breaking the bank? Sign up for Sample Data today and gain
+            access to a wealth of high-quality sample data for all your testing needs, completely free of charge.
+            Whether you're a solo developer, part of a small team, or working in a large enterprise, Sample Data has the
+            resources you need to ensure the success of your software projects, without any financial barriers.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-4">
+            Join our community of developers who rely on Sample Data for accurate, reliable testing, without spending a
+            single penny. With our platform, you can streamline your development process, improve your software quality,
+            and deliver exceptional products to your users, all for free. Get started today and unlock the full
+            potential of your software testing endeavors with Sample Data.
+        </p>
     </div>
 </div>
+<footer class="bg-gray-900 text-gray-200 py-6">
+    <div class="container mx-auto px-6 md:flex md:items-center">
+        <div class="md:flex-1 md:justify-center md:flex md:mb-6">
+            <p class="text-center md:text-left">&copy; {{ currentYear }} Sample Data. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

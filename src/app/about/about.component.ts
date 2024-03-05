@@ -9,5 +9,9 @@ import { SharedModule } from '../shared.module';
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
+  currentYear: number;
 
+  constructor() {
+    this.currentYear = new Date().getFullYear();
+  }
 }
