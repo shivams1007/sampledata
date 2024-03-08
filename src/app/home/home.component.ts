@@ -9,6 +9,8 @@ import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { DOCUMENT } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
 import { Meta, Title } from '@angular/platform-browser';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
 
 @Component({
   selector: 'app-home',
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit {
   selected_Subcatgory: string = '';
   skeleton: boolean = true;
 
-  constructor(private router: Router, private meta: Meta, private title: Title, private activatedRoute: ActivatedRoute, @Inject(DOCUMENT) private doc: any) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, @Inject(DOCUMENT) private doc: any) {
   }
 
   ngOnInit(): void {
@@ -116,12 +118,14 @@ export class HomeComponent implements OnInit {
     fetch(url)
       .then(response => response.blob())
       .then(blob => {
+        const tempUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
+        link.href = tempUrl;
         link.download = `sampleData_${resolution}`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        window.URL.revokeObjectURL(tempUrl);
       })
       .catch(error => console.error('Error downloading image:', error));
   }
