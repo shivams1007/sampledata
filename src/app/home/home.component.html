@@ -35,7 +35,7 @@
         <div *ngIf="selectedCategory">
             <div class="md:leading-7">
                 <p class="sm:text-3xl text-2xl mb-2  font-bold text-primary capitalize">
-                    {{selectedCategory.meta_title}}
+                    {{selectedCategory.title}}
                 </p>
                 <p class="sm:text-base text-sm">{{selectedCategory.description}}</p>
                 <hr class="mt-4 border-2">
@@ -82,7 +82,7 @@
                                     {{file.resolution}}
                                 </td>
                                 <td class="sm:px-16 inline-flex mt-2 px-12">
-                                    <a (click)="downloadData(file.url ,file.resolution)"
+                                    <a (click)="downloadData(file.url ,file.resolution,sub_category.name)"
                                         class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline"><svg
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-6 h-6 ">
@@ -91,7 +91,10 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </a>
-                                    <!-- <img src="assets/svg/gif.svg" alt=""> -->
+                                    <!-- <img src="assets/svg/csv.svg" alt=""> -->
+                                    <!-- <video src="assets/data/xlsx/6kb.xlsx"></video> -->
+                                    <!-- <audio src="assets/data/mp3/4.3mb.mp3"></audio> -->
+
                                 </td>
                             </tr>
                         </tbody>

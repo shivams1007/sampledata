@@ -114,20 +114,20 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  downloadData(url: string, resolution: string) {
+  downloadData(url: string, resolution: string, extension: string) {
     fetch(url)
       .then(response => response.blob())
       .then(blob => {
         const tempUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = tempUrl;
-        link.download = `sampleData_${resolution}`;
+        link.download = `sampleData_${resolution}.${extension}`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         window.URL.revokeObjectURL(tempUrl);
       })
-      .catch(error => console.error('Error downloading image:', error));
+      .catch(error => console.error('Error downloading :', error));
   }
 
   copyText() {

@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 export interface Category {
     category_id: number;
     category_name: string;
@@ -7,6 +8,7 @@ export interface Category {
     url: string;
     slug: string;
     meta_title: string;
+    title: string;
     sub_category: SubCategory[];
 }
 
