@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   selected_category: string = '';
   selected_Subcatgory: string = '';
   skeleton: boolean = true;
+  showCopiedIcon: boolean = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, @Inject(DOCUMENT) private doc: any) {
   }
@@ -138,6 +139,19 @@ export class HomeComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(textarea);
   }
+
+  onClickCoppy() {
+    this.showCopiedIcon = true;
+    this.copyText();
+    setTimeout(() => {
+      this.showCopiedIcon = false;
+    }, 10000);
+  }
+
+  closeTextBox() {
+    this.showTextArea = false;
+  }
+
 }
 
 
