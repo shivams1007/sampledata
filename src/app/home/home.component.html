@@ -73,7 +73,7 @@
                         <tbody>
                             <tr *ngFor="let file of sub_category.file" class="bg-white sm:text-sm text-xs border-b ">
                                 <td scope="row" class="px-6 py-3">
-                                    {{file.size | filesize}}
+                                    {{ file.size ? (file.size | filesize) : '-' }}
                                 </td>
                                 <td class="px-8 py-3">
                                     {{sub_category.name}}
