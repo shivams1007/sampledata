@@ -8,7 +8,7 @@
 <div class="grid grid-cols-12 gap-4 mx-auto p-5 md:p-10" *ngIf="!skeleton">
     <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
         <div
-            class="bg-zinc-100 h-auto p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border border-dashed border-primary  pl-4 pt-4">
+            class="bg-zinc-100 overflow-scroll sm:overscroll-none h-auto p-2 sticky mb-2 height shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border border-dashed border-primary  pl-4 pt-4">
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2">
                     <img class="w-8 text-primary" src="{{category.icon}}" alt="">

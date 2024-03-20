@@ -20,3 +20,7 @@
     animation: skeletonAnimation 1s infinite linear;
     cursor: wait;
 }
+
+.height {
+    max-height: -webkit-fill-available;
+}
