@@ -59,6 +59,14 @@ export class AppService {
         this.meta.updateTag({ name: 'Description', content: description });
     }
 
+    setKeywords(keywords: string) {
+        this.meta.updateTag({ name: 'Keywords', content: keywords });
+    }
+
+    setPublisher() {
+        this.meta.updateTag({ name: 'publisher', content: 'sample Data' });
+    }
+
     setCanonicalURL() {
         const existingCanonicalLink = this.doc.querySelector('link[rel="canonical"]');
         if (existingCanonicalLink) {

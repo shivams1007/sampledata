@@ -9,6 +9,7 @@ export interface Category {
     slug: string;
     meta_title: string;
     title: string;
+    meta_keywords: string;
     sub_category: SubCategory[];
 }
 
