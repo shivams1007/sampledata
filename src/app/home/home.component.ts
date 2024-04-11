@@ -10,12 +10,13 @@ import { DOCUMENT } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
 import { Meta, Title } from '@angular/platform-browser';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { ScreenTrackingService } from '@angular/fire/analytics';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent, AboutComponent],
+  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent,  AboutComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -75,7 +76,6 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-
 
   selectCategory(category: Category, subcategory_id: number | null = null) {
     this.selected_category = category.category_name;

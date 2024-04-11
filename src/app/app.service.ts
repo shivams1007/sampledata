@@ -1,17 +1,26 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject,Injector } from '@angular/core';
 import { Firestore, collection, collectionData, doc, getDocs } from '@angular/fire/firestore';
 import { Meta, Title } from '@angular/platform-browser';
 import { Observable, forkJoin, of } from 'rxjs';
+import { logEvent, setUserId, setUserProperties, Analytics, isSupported } from "@angular/fire/analytics";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
+    analytics: any;
     firestore: Firestore = inject(Firestore);
 
-    constructor(@Inject(DOCUMENT) private doc: any, private title: Title, private meta: Meta,) { }
+    constructor(@Inject(DOCUMENT) private doc: any, private title: Title, private meta: Meta,private injector: Injector) {
+
+        isSupported().then((r:any) => {
+            if (r) {
+                this.analytics = this.injector.get(Analytics);
+            }
+        });
+     }
     fetchData(): Observable<any> {
         const category = collection(this.firestore, 'category');
         return this.getItemsFromCollection(category);
@@ -79,6 +88,17 @@ export class AppService {
         window.addEventListener('popstate', () => {
             link.setAttribute('href', window.location.href);
         });
+    }
+    anyalaticslogevent(eventName: string, params: any) {
+        logEvent(this.analytics, eventName, params);
+    }
+
+    anyalaticsUserId(id:string){
+        setUserId(this.analytics, id);
+    }
+
+    anyalaticsPropertiesEvent(obj: any) {
+        setUserProperties(this.analytics, obj);
     }
 
 }

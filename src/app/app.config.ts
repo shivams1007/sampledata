@@ -1,4 +1,3 @@
-import { AppService } from './app.service';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -8,8 +7,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { provideToastr } from 'ngx-toastr';
+import { ScreenTrackingService, getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCPJ8CPE8TKdyPYVvWrS4-rFzZ3W_qM954",
@@ -31,6 +31,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom([
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
+      provideAnalytics(() => getAnalytics()),
     ])
+
   ]
 };
