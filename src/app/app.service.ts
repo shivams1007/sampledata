@@ -14,10 +14,11 @@ export class AppService {
     firestore: Firestore = inject(Firestore);
 
     constructor(@Inject(DOCUMENT) private doc: any, private title: Title, private meta: Meta,private injector: Injector) {
-
         isSupported().then((r:any) => {
+            console.log(r)
             if (r) {
                 this.analytics = this.injector.get(Analytics);
+                console.log("🚀 ~ AppService ~ isSupported ~ this.analytics :", this.analytics )
             }
         });
      }
@@ -89,8 +90,9 @@ export class AppService {
             link.setAttribute('href', window.location.href);
         });
     }
-    anyalaticslogevent(eventName: string, params: any) {
-        logEvent(this.analytics, eventName, params);
+
+    anyalaticslogevent() {
+        logEvent(this.analytics, 'user_entered_website');
     }
 
     anyalaticsUserId(id:string){

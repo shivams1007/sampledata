@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
       }
     });
     this.getCategory();
+    this.appService.anyalaticslogevent();
   }
 
   getCategory() {
