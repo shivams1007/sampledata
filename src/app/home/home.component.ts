@@ -1,4 +1,3 @@
-import { SubCategory } from './../app.interface';
 import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
@@ -8,21 +7,21 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { DOCUMENT } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
-import { Meta, Title } from '@angular/platform-browser';
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ScreenTrackingService } from '@angular/fire/analytics';
-
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SharedModule, NgxSkeletonLoaderModule, SkeletonComponent,  AboutComponent],
+  imports: [
+    SharedModule,
+    NgxSkeletonLoaderModule,
+    SkeletonComponent,
+    AboutComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
-
 export class HomeComponent implements OnInit {
-  appService: AppService = inject(AppService)
+  appService: AppService = inject(AppService);
 
   public categories: Category[] = [];
   totalWords: number | undefined;
@@ -35,11 +34,14 @@ export class HomeComponent implements OnInit {
   skeleton: boolean = true;
   showCopiedIcon: boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, @Inject(DOCUMENT) private doc: any) {
-  }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    @Inject(DOCUMENT) private doc: any
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.slug = params['slug'];
       if (this.slug) {
         this.selectCategoryBySlug(this.slug);
@@ -51,10 +53,10 @@ export class HomeComponent implements OnInit {
 
   getCategory() {
     this.skeleton = true;
-    this.appService.fetchData().subscribe(data => {
+    this.appService.fetchData().subscribe((data) => {
       this.categories = data;
       if (this.categories.length > 0) {
-        this.selectCategory(this.categories[1])
+        this.selectCategory(this.categories[2]);
       }
       this.selectCategoryBySlug(this.slug);
       this.skeleton = false;
@@ -65,12 +67,16 @@ export class HomeComponent implements OnInit {
     if (this.categories.length === 0) {
       return;
     }
-    const foundCategory = this.categories.find(category => category.slug === slug);
+    const foundCategory = this.categories.find(
+      (category) => category.slug === slug
+    );
     if (foundCategory) {
       this.selectCategory(foundCategory);
     }
     for (const category of this.categories) {
-      const foundSubCategory = category.sub_category.find(subcategory => subcategory.slug === slug);
+      const foundSubCategory = category.sub_category.find(
+        (subcategory) => subcategory.slug === slug
+      );
       if (foundSubCategory) {
         this.selectCategory(category, foundSubCategory.id);
         return;
@@ -84,19 +90,26 @@ export class HomeComponent implements OnInit {
     this.selectedCategory = category;
     let CategorySlug = category.url;
     if (subcategory_id) {
-      const foundSubcategory = category.sub_category.find(subcategory => subcategory.id === subcategory_id);
+      const foundSubcategory = category.sub_category.find(
+        (subcategory) => subcategory.id === subcategory_id
+      );
       if (foundSubcategory) {
         CategorySlug = `${foundSubcategory.url}`;
+        this.appService.setDescription(foundSubcategory.meta_description);
+        this.appService.setTitle(foundSubcategory.meta_title);
       }
+    } else {
+      this.appService.setDescription(category.meta_description);
+      this.appService.setTitle(category.meta_title);
     }
     this.router.navigate([CategorySlug]);
     if (subcategory_id) {
-      categoryCopy.sub_category = categoryCopy.sub_category.filter((data: any) => data.id === subcategory_id);
+      categoryCopy.sub_category = categoryCopy.sub_category.filter(
+        (data: any) => data.id === subcategory_id
+      );
     }
     this.selectedCategory = categoryCopy;
     this.appService.setCanonicalURL();
-    this.appService.setTitle(category.meta_title);
-    this.appService.setDescription(category.description);
     this.appService.setKeywords(category.meta_keywords);
     this.appService.setPublisher();
   }
@@ -120,8 +133,8 @@ export class HomeComponent implements OnInit {
 
   downloadData(url: string, resolution: string, extension: string) {
     fetch(url)
-      .then(response => response.blob())
-      .then(blob => {
+      .then((response) => response.blob())
+      .then((blob) => {
         const tempUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = tempUrl;
@@ -131,7 +144,7 @@ export class HomeComponent implements OnInit {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(tempUrl);
       })
-      .catch(error => console.error('Error downloading :', error));
+      .catch((error) => console.error('Error downloading :', error));
   }
 
   copyText() {
@@ -148,13 +161,10 @@ export class HomeComponent implements OnInit {
     this.copyText();
     setTimeout(() => {
       this.showCopiedIcon = false;
-    }, 10000);
+    }, 5000);
   }
 
   closeTextBox() {
     this.showTextArea = false;
   }
-
 }
-
-

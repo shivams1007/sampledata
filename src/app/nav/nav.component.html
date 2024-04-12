@@ -6,11 +6,11 @@
         </div>
 
         <div class="hidden sm:flex sm:mr-20 items-center text-center sm:text-sm text-sm space-x-4 mt-1">
-            <a (click)="homePage()" [ngClass]="{'border-bottom': ishomePageActive}"
+            <a (click)="homePage()" [ngClass]="{'border-bottom': isHomePageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">HOME</a>
             <a (click)="aboutPage()" [ngClass]="{'border-bottom': isAboutPageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">ABOUT</a>
-            <a (click)="contectUsPage()" [ngClass]="{'border-bottom': iscontectPageActive}"
+            <a (click)="contectUsPage()" [ngClass]="{'border-bottom': isContectPageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">CONTACT US</a>
         </div>
 
@@ -23,13 +23,13 @@
         </button>
     </div>
 
-    <div class="sm:hidden lg:mr-20 grid sm:grid sm:grid-cols-3 items-center ml-2 sm:text-sm text-sm space-x-4 mt-1"
+    <div class="sm:hidden lg:mr-20 grid  sm:grid-cols-3 items-center ml-2 sm:text-sm text-sm space-x-4 mt-1"
         [ngClass]="{'hidden': !sideMenuOpen}">
-        <a (click)="homePage()" [ngClass]="{'border-bottom': ishomePageActive}"
+        <a (click)="homePage()" [ngClass]="{'border-bottom': isHomePageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg ml-4 mb-2 font-semibold">&#10132; HOME</a>
         <a (click)="aboutPage()" [ngClass]="{'border-bottom': isAboutPageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg mb-2 font-semibold">&#10132; ABOUT</a>
-        <a (click)="contectUsPage()" [ngClass]="{'border-bottom': iscontectPageActive}"
+        <a (click)="contectUsPage()" [ngClass]="{'border-bottom': isContectPageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg mb-2  font-semibold">&#10132; CONTACT US</a>
     </div>
 </nav>

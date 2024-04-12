@@ -2,28 +2,28 @@
     <div class="col-span-12 lg:col-span-3  md:col-span-4 sm:col-span-12">
         <div
             class="p-2 sticky mb-2 shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter pl-4pt-4">
-            <div *ngFor="let index of [1, 2, 3, 4, 5]">
+            <div *ngFor="let index of [1, 2, 3, 4, 5,6,7,8,9,10]">
                 <h5 class="flex mb-2 mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-6 h-10 skeleton bg-gray-200 text-primary h-6">
+                        class="w-8 skeleton rounded-full bg-gray-200 -mt-1 text-primary h-8">
                         <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd" />
                     </svg>
 
                     <strong class="text-base ml-2  cursor-pointer text-primary">
                         <a class="capitalize">
-                            <div class="skeleton w-[150px] bg-gray-200 h-6"></div>
+                            <div class="skeleton w-[250px] bg-gray-200 h-6"></div>
                         </a>
                     </strong>
                 </h5>
                 <ul class="list-none p-1">
                     <li class="flex ml-2 mb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-4 skeleton h-10 bg-gray-200 text-primary h-4 mt-1">
+                            class="w-6 skeleton rounded-full  bg-gray-200 text-primary h-6 ">
                             <path fill-rule="evenodd" [attr.d]="" clip-rule="evenodd"></path>
                         </svg>
                         <a
                             class="cursor-pointer   ml-2 uppercase hover:text-primary hover:underline focus:text-primary">
-                            <div class="w-[50px] skeleton bg-gray-200 h-6"></div>
+                            <div class="w-[150px] skeleton bg-gray-200 h-6"></div>
                         </a>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <div class="flex">
-                    <div class="mt-6 w-[20px] mr-2 h-[20px] bg-gray-200 skeleton">
+                    <div class="mt-4 rounded-full w-[30px] mr-2 h-[30px] bg-gray-200 skeleton">
 
                     </div>
                     <p
@@ -66,7 +66,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="text-center" *ngFor="let index of [1, 2, 3]">
+                        <tbody class="text-center" *ngFor="let index of [1, 2, 3,4,5,6,7]">
                             <tr class=" border-b ">
                                 <td scope="row" class="px-6 py-3 ">
                                     <div class=" w-[full] skeleton h-[25px] bg-gray-200"></div>

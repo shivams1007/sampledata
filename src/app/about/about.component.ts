@@ -10,8 +10,9 @@ import { SharedModule } from '../shared.module';
 })
 export class AboutComponent {
   currentYear: number;
-
+  
   constructor() {
     this.currentYear = new Date().getFullYear();
   }
+
 }

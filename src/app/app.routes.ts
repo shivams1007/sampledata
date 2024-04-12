@@ -1,11 +1,28 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-
 export const routes: Routes = [
-    { path: 'contect-us', component: ContactUsComponent },
-    { path: 'about', component: AboutComponent },
-    { path: '', redirectTo: '/sample-videos', pathMatch: 'full' },
-    { path: ':slug', component: HomeComponent }
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./home/home.routes'),
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.routes'),
+      },
+      {
+        path: 'contect-us',
+        loadChildren: () => import('./contact-us/contact-us.routes'),
+      },
+      {
+        path: 'about',
+        loadChildren: () => import('./about/about.routes'),
+      },
+      {
+        path: ':slug',
+        loadChildren: () => import('./home/home.routes'),
+      },
+    ],
+  },
 ];

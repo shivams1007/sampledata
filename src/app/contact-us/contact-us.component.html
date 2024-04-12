@@ -1,10 +1,16 @@
 <app-nav></app-nav>
-<div class="container  leading-4 mx-auto lg:mt-50 md:mt-28 sm:mt-16 mt-6 md:w-[850px] p-3 sm:p-5 md:p-10">
+<div class="container  leading-4 mx-auto lg:mt-52 md:mt-32 sm:mt-16 mt-6 md:w-[850px] p-3 sm:p-5 md:p-10">
     <div class="col-span-12 lg:col-span-8 md:col-span-8 mt-2 sm:col-span-12">
         <div
             class="bg-zinc-100 p-6 sticky shadow-xl font-sansrounded-lg rounded-lg tracking-tighter border-2 border-dashed border-primary pl-4 pt-4">
-            <div class="text-2xl font-medium border-bottom ">
-                <p class="text-primary">Contact Us</p>
+            <div class="flex justify-between  ">
+                <div class="text-2xl font-medium border-bottom ">
+                    <p class="text-primary">Contact Us</p>
+                </div>
+                <div>
+                    <p *ngIf="ShowAlertMessage" class="sm:text-xl text-sm mt-2  text-green-500 font-bold font-serif">
+                        {{alertMessage}}</p>
+                </div>
             </div>
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class=" mt-6">
                 <div class="mb-5">
@@ -30,17 +36,6 @@
                     </div>
                 </div>
                 <div class="mb-5">
-                    <label for="email" class="block mb-2 text-lg font-medium text-primary">Subject
-                    </label>
-                    <input type="text" id="email" formControlName="subject"
-                        class="shadow-sm bg-gray-50 border border-primary text-primary text-sm rounded-lg block w-full p-3"
-                        placeholder="Enter Subject" />
-                    <div *ngIf="contactForm.controls['subject']?.invalid && contactForm.controls['subject']?.touched"
-                        class="text-red-400">
-                        <div>Subject is required.</div>
-                    </div>
-                </div>
-                <div class="mb-5">
                     <label for="email" class="block mb-2 text-lg font-medium text-primary">Message
                     </label>
                     <textarea formControlName="message"
@@ -53,6 +48,8 @@
                 </div>
                 <button type="submit"
                     class="text-white bg-primary rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+
+
             </form>
         </div>
     </div>

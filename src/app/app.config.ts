@@ -7,7 +7,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { provideToastr } from 'ngx-toastr';
 import { ScreenTrackingService, getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 
@@ -27,7 +26,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     provideClientHydration(),
-    provideToastr(),
     importProvidersFrom([
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
