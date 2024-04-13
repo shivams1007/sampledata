@@ -11,7 +11,7 @@
             class="bg-zinc-100 overflow-auto sm:overscroll-none h-auto p-2 sticky mb-2 height shadow-xl lg:fixed lg:w-1/5 md:fixed md:w-1/4 font-sansrounded-lg rounded-lg tracking-tighter border border-dashed border-primary  pl-4 pt-4">
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2">
-                    <img class="w-8 text-primary" src="{{category.icon}}" alt="">
+                    <img class="w-8 text-primary" src="{{category.icon}}" alt="" loading="lazy">
                     <strong class="text-base ml-2  cursor-pointer text-primary"
                         [ngClass]="{'border-bottom': selected_category === category.category_name}">
                         <a class=" capitalize" (click)="selectCategory(category)">
@@ -22,7 +22,7 @@
                 <ul class="list-none p-1">
                     <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
                         (click)="selectCategory(category, sub_category.id)">
-                        <img class="w-6 text-primary" src="{{sub_category.icon}}" alt="">
+                        <img class="w-6 text-primary" src="{{sub_category.icon}}" alt="" loading="lazy">
                         <a class="cursor-pointer ml-2  uppercase hover:text-primary hover:underline focus:text-primary"
                             [ngClass]="{'border-bottom': selected_Subcatgory === sub_category.name}">{{
                             sub_category.name }}</a>
@@ -37,13 +37,13 @@
                 <p class="sm:text-3xl text-2xl mb-2  font-bold text-primary capitalize">
                     {{selectedCategory.title}}
                 </p>
-                <p class="sm:text-base text-sm">{{selectedCategory.description}}</p>
+                <p class="sm:text-base text-sm" loading="lazy">{{selectedCategory.description}}</p>
                 <hr class="mt-4 border-2">
             </div>
             <div *ngFor="let sub_category of selectedCategory.sub_category">
                 <div class="flex">
                     <div class="mt-6">
-                        <img class="w-6 -mt-1 mr-2 text-primary" src="{{sub_category.icon}}" alt="">
+                        <img class="w-6 -mt-1 mr-2 text-primary" src="{{sub_category.icon}}" alt="" loading="lazy">
                     </div>
                     <p class="mt-4 sm:text-xl text-lg text-primary font-medium ">Download
                         .{{sub_category.name}}
@@ -83,7 +83,8 @@
                                 </td>
                                 <td class="sm:px-16 inline-flex mt-2 px-12">
                                     <a (click)="downloadData(file.url ,file.resolution,sub_category.name)"
-                                        class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline"><svg
+                                        class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline">
+                                        <svg
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-6 h-6 ">
                                             <path fill-rule="evenodd"
