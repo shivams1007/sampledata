@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
+  import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
