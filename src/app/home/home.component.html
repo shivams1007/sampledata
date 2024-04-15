@@ -84,7 +84,8 @@
                                     {{file.resolution}}
                                 </td>
                                 <td class="sm:px-16 inline-flex mt-2 px-12">
-                                    <a (click)="downloadData(file.url ,file.resolution,sub_category.name)"
+                                    <a [routerLink]="['/'+file.url]" routerLinkActive="router-link-active"
+                                        (click)="downloadData(file.url ,file.resolution,sub_category.name)"
                                         class=" contents cursor-pointer ml-8 font-medium text-primary hover:underline">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-6 h-6 ">
