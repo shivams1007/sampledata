@@ -12,13 +12,13 @@
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2 items-center">
                     <img class="w-8 h-8 text-primary" src="{{category.icon}}" alt="" loading="lazy">
-                    <a class="sm:text-base text-sm font-bold ml-2  cursor-pointer text-primary"
+                    <p class="sm:text-base text-sm font-bold ml-2  cursor-pointer text-primary"
                         [ngClass]="{'border-bottom': selected_category === category.category_name}">
                         <a [routerLink]="['/'+category.url]" routerLinkActive="router-link-active"
-                            class=" capitalize items-center " (click)="selectCategory(category)">
+                            class="capitalize items-center " (click)="selectCategory(category)">
                             Sample {{ category.category_name }}
                         </a>
-                    </a>
+                    </p>
                 </h5>
                 <ul class="list-none p-1">
                     <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
