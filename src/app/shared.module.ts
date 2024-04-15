@@ -9,7 +9,6 @@ import {
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilesizePipe } from './filesize.pipe';
-import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({

@@ -1,14 +1,6 @@
 import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, inject, Injector } from '@angular/core';
-import {
-  Firestore,
-  addDoc,
-  collection,
-  collectionData,
-  doc,
-  getDocs,
-} from '@angular/fire/firestore';
+import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { Meta, Title } from '@angular/platform-browser';
 import { Observable, forkJoin, of } from 'rxjs';
 import {

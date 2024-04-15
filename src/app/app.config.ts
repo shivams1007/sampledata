@@ -4,8 +4,6 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
-// import { provideClientHydration } from '@angular/platform-browser';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import {
   ScreenTrackingService,
@@ -27,8 +25,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
-    provideAnimations(),
-    // provideClientHydration(),
     importProvidersFrom([
       provideFirebaseApp(() => initializeApp(firebaseConfig)),
       provideFirestore(() => getFirestore()),
