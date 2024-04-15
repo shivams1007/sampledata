@@ -4,13 +4,15 @@
             <img src="assets/logo/logo.webp" loading="lazy" alt="logo" class="h-8 w-8  md:h-10 md:w-10" />
             <span class="font-bold text-sm sm:text-xl text-primary">Sample Data</span>
         </div>
-
         <div class="hidden sm:flex sm:mr-20 items-center text-center sm:text-sm text-sm space-x-4 mt-1">
-            <a (click)="homePage()" [ngClass]="{'border-bottom': isHomePageActive}"
+            <a [routerLink]="['/sample-video']" routerLinkActive="router-link-active"
+                [ngClass]="{'border-bottom': isHomePageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">HOME</a>
-            <a (click)="aboutPage()" [ngClass]="{'border-bottom': isAboutPageActive}"
+            <a [routerLink]="['/about']" routerLinkActive="router-link-active"
+                [ngClass]="{'border-bottom': isAboutPageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">ABOUT</a>
-            <a (click)="contectUsPage()" [ngClass]="{'border-bottom': isContectPageActive}"
+            <a [routerLink]="['/contect-us']" routerLinkActive="router-link-active"
+                [ngClass]="{'border-bottom': isContectPageActive}"
                 class="text-primary cursor-pointer sm:text-base text-xs font-semibold">CONTACT US</a>
         </div>
 
@@ -21,15 +23,19 @@
                     clip-rule="evenodd" />
             </svg>
         </button>
+
     </div>
 
     <div class="sm:hidden lg:mr-20 grid  sm:grid-cols-3 items-center ml-2 sm:text-sm text-sm space-x-4 mt-1"
         [ngClass]="{'hidden': !sideMenuOpen}">
-        <a (click)="homePage()" [ngClass]="{'border-bottom': isHomePageActive}"
+        <a [routerLink]="['/sample-video']" routerLinkActive="router-link-active"
+            [ngClass]="{'border-bottom': isHomePageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg ml-4 mb-2 font-semibold">&#10132; HOME</a>
-        <a (click)="aboutPage()" [ngClass]="{'border-bottom': isAboutPageActive}"
+        <a [routerLink]="['/about']" routerLinkActive="router-link-active"
+            [ngClass]="{'border-bottom': isAboutPageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg mb-2 font-semibold">&#10132; ABOUT</a>
-        <a (click)="contectUsPage()" [ngClass]="{'border-bottom': isContectPageActive}"
+        <a [routerLink]="['/contect-us']" routerLinkActive="router-link-active"
+            [ngClass]="{'border-bottom': isContectPageActive}"
             class="text-primary cursor-pointer sm:text-base text-lg mb-2  font-semibold">&#10132; CONTACT US</a>
     </div>
 </nav>

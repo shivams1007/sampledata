@@ -28,18 +28,6 @@ export class NavComponent {
     });
   }
 
-  aboutPage() {
-    this.router.navigate(['/about']);
-  }
-
-  contectUsPage() {
-    this.router.navigate(['/contect-us']);
-  }
-
-  homePage() {
-    this.router.navigate(['/sample-videos']);
-  }
-
   updateActivePage() {
     const currentUrl = this.router.url;
     this.isAboutPageActive = currentUrl === '/about';

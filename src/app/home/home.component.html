@@ -14,7 +14,8 @@
                     <img class="w-8 h-8 text-primary" src="{{category.icon}}" alt="" loading="lazy">
                     <a class="sm:text-base text-sm font-bold ml-2  cursor-pointer text-primary"
                         [ngClass]="{'border-bottom': selected_category === category.category_name}">
-                        <a class=" capitalize items-center " (click)="selectCategory(category)">
+                        <a [routerLink]="['/'+category.url]" routerLinkActive="router-link-active"
+                            class=" capitalize items-center " (click)="selectCategory(category)">
                             Sample {{ category.category_name }}
                         </a>
                     </a>
@@ -23,7 +24,8 @@
                     <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
                         (click)="selectCategory(category, sub_category.id)">
                         <img class="w-6 h-6 text-primary" src="{{sub_category.icon}}" alt="" loading="lazy">
-                        <a class="cursor-pointer ml-2 sm:text-base text-sm  uppercase hover:text-primary hover:underline focus:text-primary"
+                        <a [routerLink]="['/'+sub_category.url]" routerLinkActive="router-link-active"
+                            class="cursor-pointer ml-2 sm:text-base text-sm  uppercase hover:text-primary hover:underline focus:text-primary"
                             [ngClass]="{'border-bottom': selected_Subcatgory === sub_category.name}">{{
                             sub_category.name }}</a>
                     </li>
