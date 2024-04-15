@@ -1,9 +1,8 @@
-  import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
+import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
 import { DOCUMENT } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
@@ -11,12 +10,7 @@ import { AboutComponent } from '../about/about.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    SharedModule,
-    NgxSkeletonLoaderModule,
-    SkeletonComponent,
-    AboutComponent,
-  ],
+  imports: [SharedModule, SkeletonComponent, AboutComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
