@@ -34,10 +34,10 @@
     <div class="col-span-12  lg:col-span-8 md:col-span-8 sm:col-span-12">
         <div *ngIf="selectedCategory">
             <div class="md:leading-7">
-                <p class="sm:text-3xl text-2xl mb-2  font-bold text-primary capitalize">
+                <p class="sm:text-3xl text-2xl mb-2 font-bold text-primary capitalize">
                     {{selectedCategory.title}}
                 </p>
-                <p class="sm:text-base text-sm" loading="lazy">{{selectedCategory.description}}</p>
+                <p class="text-sm delay-1000">{{selectedCategory.description}}</p>
                 <hr class="mt-4 border-2">
             </div>
             <div *ngFor="let sub_category of selectedCategory.sub_category">
