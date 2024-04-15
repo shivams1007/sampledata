@@ -1,11 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterLink,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -20,7 +15,7 @@ export class NavComponent {
   isContectPageActive: boolean = false;
   isHomePageActive: boolean = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.updateActivePage();

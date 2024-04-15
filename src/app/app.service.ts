@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, inject, Injector } from '@angular/core';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { Meta, Title } from '@angular/platform-browser';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {
   logEvent,
   setUserId,

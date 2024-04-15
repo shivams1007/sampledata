@@ -4,12 +4,8 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import {
-  ScreenTrackingService,
-  getAnalytics,
-  provideAnalytics,
-} from '@angular/fire/analytics';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCPJ8CPE8TKdyPYVvWrS4-rFzZ3W_qM954',
