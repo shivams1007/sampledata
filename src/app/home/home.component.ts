@@ -101,6 +101,7 @@ export class HomeComponent implements OnInit {
     this.appService.setCanonicalURL();
     this.appService.setKeywords(category.meta_keywords);
     this.appService.setPublisher();
+    this.appService.setRobots();
   }
 
   generateText() {

@@ -158,6 +158,10 @@ export class AppService {
     this.meta.updateTag({ name: 'publisher', content: 'sample Data' });
   }
 
+  setRobots() {
+    this.meta.updateTag({ name: 'robots', content: 'all' });
+  }
+
   setCanonicalURL() {
     const existingCanonicalLink = this.doc.querySelector(
       'link[rel="canonical"]'

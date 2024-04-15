@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { SharedModule } from '../shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,6 +12,7 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
   styleUrl: './contact-us.component.scss',
 })
 export class ContactUsComponent {
+  appService: AppService = inject(AppService);
   firestore: Firestore = inject(Firestore);
   ShowAlertMessage: boolean = false;
   alertMessage: string = 'Send Successfully';
@@ -22,6 +24,12 @@ export class ContactUsComponent {
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
     });
+
+    this.appService.setCanonicalURL();
+    this.appService.setDescription(
+      'Connect effortlessly with Sample Datas Contact Us page. Access a variety of media types for free - images, videos, files, and more!'
+    );
+    this.appService.setTitle('Contact Us | Sample Data');
   }
 
   async onSubmit() {
