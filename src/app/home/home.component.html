@@ -12,18 +12,18 @@
             <div *ngFor="let category of categories">
                 <h5 class="flex mb-2 mt-2 items-center">
                     <img class="w-8 h-8 text-primary" src="{{category.icon}}" alt="" loading="lazy">
-                    <strong class="text-base ml-2  cursor-pointer text-primary"
+                    <a class="sm:text-base text-sm font-bold ml-2  cursor-pointer text-primary"
                         [ngClass]="{'border-bottom': selected_category === category.category_name}">
                         <a class=" capitalize items-center " (click)="selectCategory(category)">
                             Sample {{ category.category_name }}
                         </a>
-                    </strong>
+                    </a>
                 </h5>
                 <ul class="list-none p-1">
                     <li class="flex ml-2 mb-2" *ngFor="let sub_category of category.sub_category"
                         (click)="selectCategory(category, sub_category.id)">
                         <img class="w-6 h-6 text-primary" src="{{sub_category.icon}}" alt="" loading="lazy">
-                        <a class="cursor-pointer ml-2  uppercase hover:text-primary hover:underline focus:text-primary"
+                        <a class="cursor-pointer ml-2 sm:text-base text-sm  uppercase hover:text-primary hover:underline focus:text-primary"
                             [ngClass]="{'border-bottom': selected_Subcatgory === sub_category.name}">{{
                             sub_category.name }}</a>
                     </li>
