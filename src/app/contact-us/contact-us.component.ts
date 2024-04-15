@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from '../shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppService } from '../app.service';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 
 @Component({

@@ -1,10 +1,9 @@
-import { Component, OnInit, inject, Pipe, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AppService } from '../app.service';
 import { SharedModule } from '../shared.module';
 import { Category } from '../app.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SkeletonComponent } from '../skeleton/skeleton.component';
-import { DOCUMENT } from '@angular/common';
 import { AboutComponent } from '../about/about.component';
 
 @Component({
@@ -28,11 +27,7 @@ export class HomeComponent implements OnInit {
   skeleton: boolean = true;
   showCopiedIcon: boolean = false;
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    @Inject(DOCUMENT) private doc: any
-  ) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
