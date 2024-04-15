@@ -159,7 +159,7 @@ export class AppService {
   }
 
   setRobots() {
-    this.meta.updateTag({ name: 'robots', content: 'all' });
+    this.meta.updateTag({ name: 'robots', content: 'noindex' });
   }
 
   setCanonicalURL() {
