@@ -26,7 +26,7 @@ export class NavComponent {
   updateActivePage() {
     const currentUrl = this.router.url;
     this.isAboutPageActive = currentUrl === '/about';
-    this.isContectPageActive = currentUrl === '/contect-us';
+    this.isContectPageActive = currentUrl === '/contact-us';
     this.isHomePageActive =
       !this.isAboutPageActive && !this.isContectPageActive;
   }

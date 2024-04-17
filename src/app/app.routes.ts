@@ -12,7 +12,7 @@ export const routes: Routes = [
         loadChildren: () => import('./home/home.routes'),
       },
       {
-        path: 'contect-us',
+        path: 'contact-us',
         loadChildren: () => import('./contact-us/contact-us.routes'),
       },
       {
